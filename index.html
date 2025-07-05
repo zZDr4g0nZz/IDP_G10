@@ -2,43 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Video Gallery</title>
+  <title>Video Showcase</title>
   <style>
     body {
       text-align: center;
-      font-family: sans-serif;
-      background: #f9f9f9;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 50px;
     }
-    h1 { margin-top: 30px; }
-    .gallery {
+
+    h1 {
+      margin-bottom: 40px;
+    }
+
+    .button-container {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
-      padding: 40px;
     }
-    .gallery img {
-      width: 300px;
-      height: 200px;
-      object-fit: cover;
-      border: 2px solid #ccc;
-      border-radius: 10px;
+
+    .video-button {
+      padding: 20px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #0077cc;
+      color: white;
       cursor: pointer;
-      transition: 0.3s;
+      transition: background-color 0.3s;
+      width: 250px;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
-      border-color: #0077cc;
+
+    .video-button:hover {
+      background-color: #005fa3;
     }
   </style>
 </head>
 <body>
-  <h1>My Video Gallery</h1>
-  <div class="gallery">
-    <a href="video1.html"><img src="images/thumb1.jpg" alt="Video 1"></a>
-    <a href="video2.html"><img src="images/thumb2.jpg" alt="Video 2"></a>
-    <a href="video3.html"><img src="images/thumb3.jpg" alt="Video 3"></a>
-    <a href="video4.html"><img src="images/thumb4.jpg" alt="Video 4"></a>
+
+  <h1>Video Demonstrations</h1>
+
+  <div class="button-container">
+    <a href="video1.html"><button class="video-button">Circuit and IoT Validation</button></a>
+    <a href="video2.html"><button class="video-button">Air Flow Simulation</button></a>
+    <a href="video3.html"><button class="video-button">Synchronizing Between IoT</button></a>
+    <a href="video4.html"><button class="video-button">Simulation of Flex Sensor Reading</button></a>
   </div>
+
 </body>
 </html>
