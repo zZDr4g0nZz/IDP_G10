@@ -67,11 +67,12 @@
       max-height: 400px;
     }
 
-    .video-grid {
+    .video-grid-2x2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
-      margin-top: 20px;
+      max-width: 600px;
+      margin: auto;
     }
 
     .video-button {
@@ -107,17 +108,22 @@
 
   <header>
     <h1>StrokeEase</h1>
-    <p>An IoT-Based Smart Glove for Stroke Rehabilitation</p>
+    <p>An hybrid IoT-Based Smart Glove for Stroke Rehabilitation</p>
   </header>
 
   <section>
     <div class="section-title">✨ Key Features</div>
     <ul class="features-list">
       <li>Hybrid IoT connectivity (Blynk + Local Web)</li>
+      <li>WiFi ID and password storage for multiple networks</li>
+      <li>Automatic WiFi scanning and connect based on signal strength</li>
+      <li>WiFi Reconnectability</li>
+      <li>Synchronize data between hybrid IoT</li>
       <li>Multiple therapies: vibration, heat, and movement</li>
       <li>Automatic heat cut-off based on temperature limit</li>
-      <li>Adjustable temperature threshold</li>
-      <li>Adjustable pump cycle strength and timing</li>
+      <li>Adjustable temperature limit to ensure a wide range of patient heat tolerance</li>
+      <li>Adjustable pump cycle strength level and times</li>
+      <li>Other safety mechanism: main switch</li>
     </ul>
   </section>
 
