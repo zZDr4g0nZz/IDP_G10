@@ -259,18 +259,26 @@
 
   <section>
     <div class="section-title">🔥 Automatic Heating Cutoff</div>
-    <div style="text-align: center;">
-      <video width="700" controls autoplay muted loop style="border-radius: 10px; border: 2px solid #ccc; max-width: 100%;">
+    <div style="max-width: 700px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 20px;">
+
+      <video width="320" controls autoplay muted loop style="border-radius: 10px; border: 2px solid #ccc; max-width: 100%;">
         <source src="videos/cutoff.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <p style="max-width: 700px; margin: 20px auto; font-size: 18px; text-align: justify;">
-        The system automatically disables heating when the glove’s internal temperature exceeds a defined safety limit. 
-        This ensures patient comfort and prevents the risk of overheating during therapy sessions. The threshold is adjustable 
-        to suit different users' heat tolerance.
-      </p>
+
+      <div style="flex: 1; font-size: 18px; text-align: justify;">
+        <p>
+          The system automatically disables heating when the glove’s internal temperature exceeds a defined temperature limit.
+          This ensures patient comfort and prevents overheating during therapy.
+        </p>
+        <p>
+          The cutoff temperature is adjustable through both Blynk and the local web interface, allowing flexible control based on
+          patient needs and tolerance.
+        </p>
+      </div>
     </div>
   </section>
+
 
   <section>
     <div class="section-title">🎬 Demonstration Videos</div>
