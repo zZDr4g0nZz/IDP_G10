@@ -89,6 +89,11 @@
       text-align: justify;
     }
 
+    .dev-container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 0 20px;
+    }
     
     .video-grid-2x2 {
       display: grid;
@@ -188,25 +193,27 @@
   
   <section>
     <div class="section-title">🛠️Offline IoT Development Process</div>
-    
-    <div class="dev-step">
-      <img src="images/Wifi1.png" alt="WiFi 1">
-      <p>Use antenna to increase the received signal strength, but the result is insignificant.</p>
-    </div>
 
-    <div class="dev-step">
-      <img src="images/Wifi2.png" alt="WiFi 2">
-      <p>Discovery of ESP-NOW feature which allows multiple ESP devices to communicate, but high cost and uncertainty of connectivity stability.</p>
-    </div>
+    <div class="dev-container">
+      <div class="dev-step">
+        <img src="images/Wifi1.png" alt="WiFi 1">
+        <p>Use antenna to increase the received signal strength, but the result is insignificant.</p>
+      </div>
 
-    <div class="dev-step">
-      <img src="images/Wifi3.png" alt="WiFi 3">
-      <p>Exploration of ESP Bluetooth functionality but integrating web interfaces proved difficult using the MIT.</p>
-    </div>
+      <div class="dev-step">
+        <img src="images/Wifi2.png" alt="WiFi 2">
+        <p>Discovery of ESP-NOW feature which allows multiple ESP devices to communicate, but high cost and uncertainty of connectivity stability.</p>
+      </div>
 
-    <div class="dev-step">
-      <img src="images/Wifi4.png" alt="WiFi 4">
-      <p>Final solution: ESP32 can create its own Access Point and serve a local website for offline IoT control</p>
+      <div class="dev-step">
+        <img src="images/Wifi3.png" alt="WiFi 3">
+        <p>Exploration of ESP Bluetooth functionality but integrating web interfaces proved difficult using the MIT.</p>
+      </div>
+
+      <div class="dev-step">
+        <img src="images/Wifi4.png" alt="WiFi 4">
+        <p>Final solution: ESP32 can create its own Access Point and serve a local website for offline IoT control</p>
+      </div>
     </div>
   </section>
 
