@@ -94,7 +94,7 @@
       margin: auto;
       padding: 0 20px;
     }
-    
+
     .video-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -119,16 +119,60 @@
       background-color: #005fa3;
     }
 
-    a {
-      text-decoration: none;
-    }
-
     footer {
       margin-top: 60px;
       padding: 20px;
       background: #eee;
       text-align: center;
       font-size: 14px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 800px;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-content iframe {
+      width: 100%;
+      height: 400px;
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      background-color: #005fa3;
     }
   </style>
 </head>
@@ -168,7 +212,7 @@
       <img src="images/Program_flow.png" alt="Program Flowchart">
     </div>
   </section>
-  
+
   <section>
     <div class="section-title">🔌 Circuit Design</div>
     <div class="image-gallery">
@@ -184,53 +228,71 @@
     </div>
   </section>
 
-    <section>
-    <div class="section-title">🌐Hybrid IoT</div>
+  <section>
+    <div class="section-title">🌐 Hybrid IoT</div>
     <div class="image-gallery">
       <img src="images/IoT.png" alt="IoT">
     </div>
   </section>
-  
-  <section>
-    <div class="section-title">🛠️Offline IoT Development Process</div>
 
+  <section>
+    <div class="section-title">🛠️ Offline IoT Development Process</div>
     <div class="dev-container">
       <div class="dev-step">
         <img src="images/Wifi1.png" alt="WiFi 1">
         <p>Use antenna to increase the received signal strength, but the result is insignificant.</p>
       </div>
-
       <div class="dev-step">
         <img src="images/Wifi2.png" alt="WiFi 2">
         <p>Discovery of ESP-NOW feature which allows multiple ESP devices to communicate, but high cost and uncertainty of connectivity stability.</p>
       </div>
-
       <div class="dev-step">
         <img src="images/Wifi3.png" alt="WiFi 3">
         <p>Exploration of ESP Bluetooth functionality but integrating web interfaces proved difficult using the MIT.</p>
       </div>
-
       <div class="dev-step">
         <img src="images/Wifi4.png" alt="WiFi 4">
-        <p>Final solution: ESP32 can create its own Access Point and serve a local website for offline IoT control</p>
+        <p>Final solution: ESP32 can create its own Access Point and serve a local website for offline IoT control.</p>
       </div>
     </div>
   </section>
 
-
   <section>
     <div class="section-title">🎬 Demonstration Videos</div>
     <div class="video-grid">
-      <a href="video1.html"><button class="video-button">Circuit and IoT Validation</button></a>
-      <a href="video2.html"><button class="video-button">Air Flow Simulation</button></a>
-      <a href="video3.html"><button class="video-button">Synchronize Data Between IoT</button></a>
-      <a href="video4.html"><button class="video-button">Simulation of Flex Sensor Reading</button></a>
+      <button class="video-button" onclick="openVideo('https://www.youtube.com/embed/tXUKncyTG7I')">Circuit and IoT Validation</button>
+      <button class="video-button" onclick="openVideo('https://www.youtube.com/embed/lbiNKRIRHGs')">Air Flow Simulation</button>
+      <button class="video-button" onclick="openVideo('https://www.youtube.com/embed/Y5xFcSVNkdQ')">Synchronize Data Between IoT</button>
+      <button class="video-button" onclick="openVideo('https://www.youtube.com/embed/xiRqTU-K7zM')">Simulation of Flex Sensor Reading</button>
     </div>
   </section>
+
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+      <button class="close-btn" onclick="closeModal()">Return</button>
+    </div>
+  </div>
 
   <footer>
     &copy; IDP G10 UniMAP
   </footer>
+
+  <script>
+    function openVideo(videoURL) {
+      const modal = document.getElementById("videoModal");
+      const frame = document.getElementById("videoFrame");
+      frame.src = videoURL + "?autoplay=1";
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("videoModal");
+      const frame = document.getElementById("videoFrame");
+      modal.style.display = "none";
+      frame.src = ""; // Stop the video
+    }
+  </script>
 
 </body>
 </html>
