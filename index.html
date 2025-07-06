@@ -66,6 +66,28 @@
       border-radius: 10px;
       max-height: 400px;
     }
+
+    .dev-step {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 30px 0;
+      gap: 20px;
+    }
+
+    .dev-step img {
+      width: 300px;
+      max-width: 100%;
+      border-radius: 10px;
+      border: 2px solid #ccc;
+    }
+
+    .dev-step p {
+      flex: 1;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
     
     .video-grid-2x2 {
       display: grid;
@@ -163,6 +185,31 @@
     </div>
   </section>
   
+  <section>
+    <div class="section-title">🛠️Offline IoT Development Process</div>
+    
+    <div class="dev-step">
+      <img src="images/Wifi1.png" alt="WiFi 1">
+      <p>Use WiFi antenna to increase the received signal strength, but the result is insignificant.</p>
+    </div>
+
+    <div class="dev-step">
+      <img src="images/Wifi2.png" alt="WiFi 2">
+      <p>Discovery of ESP-NOW feature, which allows multiple ESP devices to communicate — but high cost and unstable connection made it unsuitable.</p>
+    </div>
+
+    <div class="dev-step">
+      <img src="images/Wifi3.png" alt="WiFi 3">
+      <p>Exploration of ESP Bluetooth functionality, but integrating web interfaces proved difficult.</p>
+    </div>
+
+    <div class="dev-step">
+      <img src="images/Wifi4.png" alt="WiFi 4">
+      <p>Final solution: ESP32 can create its own Access Point and serve a local website for offline IoT control — simple and effective!</p>
+    </div>
+  </section>
+
+
   <section>
     <div class="section-title">🎬 Demonstration Videos</div>
     <div class="video-grid">
