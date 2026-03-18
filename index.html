@@ -5,6 +5,10 @@
   <title>StrokeEase</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -18,6 +22,14 @@
       color: white;
       padding: 40px 20px;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: box-shadow 0.3s ease;
+    }
+
+    header.scrolled {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     h1 {
@@ -174,6 +186,18 @@
     .close-btn:hover {
       background-color: #005fa3;
     }
+
+    /* Scroll reveal base animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -183,7 +207,7 @@
     <p>An hybrid IoT-Based Smart Glove for Stroke Rehabilitation</p>
   </header>
 
-  <section>
+  <section class="reveal">
     <div class="section-title">✨ Key Features</div>
     <ul class="features-list">
       <li>Multiple therapies: vibration, heat and movement</li>
@@ -199,21 +223,21 @@
     </ul>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="section-title">🧭 Project Flowchart</div>
     <div class="image-gallery">
       <img src="images/Project_flow.png" alt="Project Flowchart">
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="section-title">💻 Program Flowchart</div>
     <div class="image-gallery">
       <img src="images/Program_flow.png" alt="Program Flowchart">
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="section-title">🔌 Circuit Design</div>
     <div class="image-gallery">
       <img src="images/Circuit_block.png" alt="Circuit Diagram">
@@ -221,43 +245,43 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="section-title">🧊 3D Prototype Design</div>
     <div class="image-gallery">
       <img src="images/Prototype_1.png" alt="Prototype Image">
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="section-title">🌐 Hybrid IoT</div>
     <div class="image-gallery">
       <img src="images/IoT.png" alt="IoT">
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="section-title">🛠️ Offline IoT Development Process</div>
     <div class="dev-container">
-      <div class="dev-step">
+      <div class="dev-step reveal">
         <img src="images/Wifi1.png" alt="WiFi 1">
         <p>1. Use antenna to increase the received signal strength, but the result is insignificant.</p>
       </div>
-      <div class="dev-step">
+      <div class="dev-step reveal">
         <img src="images/Wifi2.png" alt="WiFi 2">
         <p>2. Discovery of ESP-NOW feature which allows multiple ESP devices to communicate, but high cost and uncertainty of connectivity stability.</p>
       </div>
-      <div class="dev-step">
+      <div class="dev-step reveal">
         <img src="images/Wifi3.png" alt="WiFi 3">
         <p>3. Exploration of ESP Bluetooth functionality but integrating web interfaces proved difficult using the MIT.</p>
       </div>
-      <div class="dev-step">
+      <div class="dev-step reveal">
         <img src="images/Wifi4.png" alt="WiFi 4">
         <p>4. ESP32 can create its own Access Point and serve a local website for offline IoT control.</p>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="section-title">🔥 Automatic Heating Cutoff</div>
     <div style="max-width: 700px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 20px;">
 
@@ -279,7 +303,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="section-title">💪 Adjustable Strength Level</div>
     <div style="max-width: 700px; margin: auto; display: flex; flex-direction: column; gap: 30px;">
 
@@ -310,7 +334,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="section-title">💪 Adjustable Pump Cycle Times</div>
     <div style="max-width: 700px; margin: auto; display: flex; flex-direction: column; gap: 30px;">
 
@@ -323,7 +347,7 @@
     </div>
   </section>
   
-  <section>
+  <section class="reveal">
     <div class="section-title">🎬 Videos</div>
     <div class="video-grid">
       <button class="video-button" onclick="openVideo('https://www.youtube.com/embed/tXUKncyTG7I')">Circuit and IoT Validation</button>
@@ -359,6 +383,34 @@
       modal.style.display = "none";
       frame.src = ""; // Stop the video
     }
+
+    // Scroll reveal using Intersection Observer
+    const observerOptions = {
+      threshold: 0.2 // 20% visible
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          observer.unobserve(entry.target); // animate once
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // Header shadow on scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
   </script>
 
 </body>
