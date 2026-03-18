@@ -357,16 +357,16 @@
       Core technologies that make StrokeEase a smart, safe and adaptive rehabilitation companion.
     </p>
     <ul class="features-list">
-      >Multiple therapies: vibration, heat and movement</li>
-      >WiFi ID and password storage for multiple networks</li>
-      >Automatic WiFi scanning and connection based on signal strength</li>
-      >WiFi reconnectability for unstable environments</li>
-      >Hybrid IoT connectivity (Blynk + Local Web)</li>
-      >Data synchronization between cloud and local interfaces</li>
-      >Automatic heat cut-off based on temperature limit</li>
-      >Adjustable temperature limit for different patient tolerances</li>
-      >Adjustable pump cycle strength level and timing</li>
-      >Additional safety mechanism: main switch</li>
+      <li>Multiple therapies: vibration, heat and movement</li>
+      <li>WiFi ID and password storage for multiple networks</li>
+      <li>Automatic WiFi scanning and connection based on signal strength</li>
+      <li>WiFi reconnectability for unstable environments</li>
+      <li>Hybrid IoT connectivity (Blynk + Local Web)</li>
+      <li>Data synchronization between cloud and local interfaces</li>
+      <li>Automatic heat cut-off based on temperature limit</li>
+      <li>Adjustable temperature limit for different patient tolerances</li>
+      <li>Adjustable pump cycle strength level and timing</li>
+      <li>Additional safety mechanism: main switch</li>
     </ul>
   </section>
 
@@ -409,22 +409,55 @@
   <section class="reveal">
     <div class="section-title">🛠️ Offline IoT Development Process</div>
     <div class="dev-container">
+  
       <div class="dev-step reveal-left">
+        <div style="min-width: 80px; text-align: center; font-weight: bold; color: #00ff99;">
+          Step 01
+          <div style="font-size: 13px; opacity: 0.8;">Initial Trial</div>
+        </div>
         <img src="images/Wifi1.png" alt="WiFi 1">
-        <p>1. Tested external antenna configuration to increase received signal strength, but improvement was insignificant in real environments.</p>
+        <p>
+          Used an external antenna to increase received WiFi signal strength.
+          Improvement in real environments was minimal, so the approach was not adopted as the main solution.
+        </p>
       </div>
+  
       <div class="dev-step reveal-right">
+        <div style="min-width: 80px; text-align: center; font-weight: bold; color: #00ff99;">
+          Step 02
+          <div style="font-size: 13px; opacity: 0.8;">ESP‑NOW</div>
+        </div>
         <img src="images/Wifi2.png" alt="WiFi 2">
-        <p>2. Explored ESP-NOW for direct ESP-to-ESP communication; however, hardware cost and uncertainty in long-term connectivity stability were limiting factors.</p>
+        <p>
+          Explored ESP‑NOW communication between multiple ESP devices.
+          While it enabled direct device-to-device links, hardware cost and long‑term connectivity stability were concerns.
+        </p>
       </div>
+  
       <div class="dev-step reveal-left">
+        <div style="min-width: 80px; text-align: center; font-weight: bold; color: #00ff99;">
+          Step 03
+          <div style="font-size: 13px; opacity: 0.8;">Bluetooth</div>
+        </div>
         <img src="images/Wifi3.png" alt="WiFi 3">
-        <p>3. Investigated ESP Bluetooth functions, but integrating web interfaces via MIT App Inventor introduced complexity and limited flexibility.</p>
+        <p>
+          Investigated ESP Bluetooth integration with MIT App Inventor.
+          The solution worked in principle but became complex for web integration and future feature expansion.
+        </p>
       </div>
+  
       <div class="dev-step reveal-right">
+        <div style="min-width: 80px; text-align: center; font-weight: bold; color: #00ff99;">
+          Step 04
+          <div style="font-size: 13px; opacity: 0.8;">Final Choice</div>
+        </div>
         <img src="images/Wifi4.png" alt="WiFi 4">
-        <p>4. Final approach: ESP32 hosts its own Access Point and local web server, enabling offline IoT control independent of external infrastructure.</p>
+        <p>
+          Final solution: ESP32 operates as an Access Point and local web server.
+          This provides reliable offline IoT control without relying on external WiFi infrastructure.
+        </p>
       </div>
+  
     </div>
   </section>
 
