@@ -12,40 +12,76 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+      background-color: #0e1117;
+      color: #f5f5f5;
       line-height: 1.6;
     }
 
+    /* Scroll progress bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      z-index: 2000;
+    }
+
+    .progress-bar__inner {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #00e1ff, #00ff88);
+      transform-origin: left center;
+      transition: width 0.1s linear;
+    }
+
     header {
-      background-color: #0077cc;
+      background: rgba(10, 14, 23, 0.92);
       color: white;
-      padding: 40px 20px;
+      padding: 32px 20px;
       text-align: center;
       position: sticky;
       top: 0;
-      z-index: 1000;
-      transition: box-shadow 0.3s ease;
+      z-index: 1500;
+      backdrop-filter: blur(10px);
+      transition: box-shadow 0.3s ease, padding 0.3s ease, background 0.3s ease;
     }
 
     header.scrolled {
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      padding: 20px 20px;
+      background: rgba(10, 14, 23, 0.98);
     }
 
     h1 {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin: 0;
+      opacity: 0.85;
     }
 
     section {
-      padding: 40px 20px;
-      max-width: 1000px;
+      padding: 60px 20px;
+      max-width: 1100px;
       margin: auto;
     }
 
     .section-title {
-      font-size: 24px;
-      margin-bottom: 20px;
+      font-size: 26px;
+      margin-bottom: 24px;
       text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      opacity: 0.85;
     }
 
     .features-list {
@@ -53,30 +89,31 @@
       padding: 0;
       font-size: 18px;
       display: grid;
-      gap: 10px;
-      max-width: 600px;
+      gap: 12px;
+      max-width: 650px;
       margin: auto;
     }
 
     .features-list li::before {
-      content: "✔️ ";
-      color: green;
+      content: "● ";
+      color: #00ff99;
     }
 
     .image-gallery {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 24px;
       margin-top: 20px;
     }
 
     .image-gallery img {
       max-width: 100%;
       height: auto;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      max-height: 400px;
+      border: 1px solid #222;
+      border-radius: 14px;
+      max-height: 420px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .dev-step {
@@ -84,153 +121,263 @@
       flex-wrap: wrap;
       align-items: center;
       margin: 30px 0;
-      gap: 20px;
+      gap: 24px;
+      background: #141922;
+      border-radius: 16px;
+      padding: 18px;
+      border: 1px solid #232b3a;
     }
 
     .dev-step img {
       width: 300px;
       max-width: 100%;
-      border-radius: 10px;
-      border: 2px solid #ccc;
+      border-radius: 12px;
+      border: 1px solid #222b3a;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
     }
 
     .dev-step p {
       flex: 1;
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.5;
       text-align: justify;
+      opacity: 0.92;
     }
 
     .dev-container {
-      max-width: 700px;
+      max-width: 800px;
       margin: auto;
       padding: 0 20px;
     }
 
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 20px;
-      max-width: 700px;
+      max-width: 750px;
       margin: auto;
     }
 
     .video-button {
       padding: 20px;
       font-size: 18px;
-      border: none;
-      border-radius: 10px;
-      background-color: #0077cc;
+      border: 1px solid #222b3a;
+      border-radius: 16px;
+      background: #141922;
       color: white;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
       width: 100%;
+      text-align: left;
     }
 
     .video-button:hover {
-      background-color: #005fa3;
+      background: #1b2230;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
     }
 
     footer {
       margin-top: 60px;
       padding: 20px;
-      background: #eee;
+      background: #05070b;
       text-align: center;
       font-size: 14px;
+      color: #9ca3af;
+      border-top: 1px solid #1f2933;
     }
 
     a {
       text-decoration: none;
+      color: inherit;
     }
 
     .modal {
       display: none;
       position: fixed;
-      z-index: 9999;
+      z-index: 3000;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
       overflow: auto;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(2, 6, 23, 0.9);
       justify-content: center;
       align-items: center;
+      padding: 20px;
     }
 
     .modal-content {
-      background-color: #fff;
+      background-color: #111827;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 16px;
       width: 90%;
-      max-width: 800px;
+      max-width: 900px;
       text-align: center;
       position: relative;
+      border: 1px solid #374151;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
     }
 
     .modal-content iframe {
       width: 100%;
-      height: 400px;
+      height: 480px;
+      border-radius: 12px;
+      border: none;
     }
 
     .close-btn {
       margin-top: 20px;
-      padding: 10px 20px;
+      padding: 10px 24px;
       font-size: 16px;
-      background-color: #0077cc;
+      background-color: #111827;
       color: white;
-      border: none;
-      border-radius: 8px;
+      border: 1px solid #4b5563;
+      border-radius: 999px;
       cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
     }
 
     .close-btn:hover {
-      background-color: #005fa3;
+      background-color: #1f2937;
+      transform: translateY(-1px);
     }
 
-    /* Scroll reveal base animation */
+    /* === Scroll reveal animations === */
     .reveal {
       opacity: 0;
       transform: translateY(40px);
-      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
 
     .reveal-visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate(0, 0);
+    }
+
+    /* Video and text blocks */
+    .media-block {
+      max-width: 800px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 24px;
+      background: #141922;
+      border-radius: 16px;
+      padding: 18px;
+      border: 1px solid #232b3a;
+    }
+
+    .media-block video {
+      border-radius: 12px;
+      border: 1px solid #232b3a;
+      max-width: 100%;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.65);
+    }
+
+    .media-text {
+      flex: 1;
+      font-size: 17px;
+      text-align: justify;
+      opacity: 0.92;
+    }
+
+    .video-column {
+      max-width: 800px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .video-column video {
+      border-radius: 12px;
+      border: 1px solid #232b3a;
+      max-width: 100%;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.65);
+    }
+
+    .video-caption {
+      margin-top: 8px;
+      font-size: 17px;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 40px 16px;
+      }
+
+      .dev-step {
+        padding: 14px;
+      }
+
+      .media-block {
+        padding: 14px;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content iframe {
+        height: 320px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Scroll progress bar -->
+  <div class="progress-bar">
+    <div class="progress-bar__inner" id="scrollProgress"></div>
+  </div>
+
   <header>
     <h1>StrokeEase</h1>
-    <p>An hybrid IoT-Based Smart Glove for Stroke Rehabilitation</p>
+    <p>Hybrid IoT-Based Smart Glove for Stroke Rehabilitation</p>
   </header>
 
   <section class="reveal">
     <div class="section-title">✨ Key Features</div>
+    <p class="section-subtitle">
+      Core technologies that make StrokeEase a smart, safe and adaptive rehabilitation companion.
+    </p>
     <ul class="features-list">
-      <li>Multiple therapies: vibration, heat and movement</li>
-      <li>WiFi ID and password storage for multiple networks</li>
-      <li>Automatic WiFi scanning and connect based on signal strength</li>
-      <li>WiFi Reconnectability</li>
-      <li>Hybrid IoT connectivity (Blynk + Local Web)</li>
-      <li>Synchronize data between hybrid IoT</li>
-      <li>Automatic heat cut-off based on temperature limit</li>
-      <li>Adjustable temperature limit to ensure a wide range of patient heat tolerance</li>
-      <li>Adjustable pump cycle strength level and times</li>
-      <li>Other safety mechanism: main switch</li>
+      >Multiple therapies: vibration, heat and movement</li>
+      >WiFi ID and password storage for multiple networks</li>
+      >Automatic WiFi scanning and connection based on signal strength</li>
+      >WiFi reconnectability for unstable environments</li>
+      >Hybrid IoT connectivity (Blynk + Local Web)</li>
+      >Data synchronization between cloud and local interfaces</li>
+      >Automatic heat cut-off based on temperature limit</li>
+      >Adjustable temperature limit for different patient tolerances</li>
+      >Adjustable pump cycle strength level and timing</li>
+      >Additional safety mechanism: main switch</li>
     </ul>
   </section>
 
-  <section class="reveal">
+  <section class="reveal-left">
     <div class="section-title">🧭 Project Flowchart</div>
     <div class="image-gallery">
       <img src="images/Project_flow.png" alt="Project Flowchart">
     </div>
   </section>
 
-  <section class="reveal">
+  <section class="reveal-right">
     <div class="section-title">💻 Program Flowchart</div>
     <div class="image-gallery">
       <img src="images/Program_flow.png" alt="Program Flowchart">
@@ -245,14 +392,14 @@
     </div>
   </section>
 
-  <section class="reveal">
+  <section class="reveal-left">
     <div class="section-title">🧊 3D Prototype Design</div>
     <div class="image-gallery">
       <img src="images/Prototype_1.png" alt="Prototype Image">
     </div>
   </section>
 
-  <section class="reveal">
+  <section class="reveal-right">
     <div class="section-title">🌐 Hybrid IoT</div>
     <div class="image-gallery">
       <img src="images/IoT.png" alt="IoT">
@@ -262,99 +409,101 @@
   <section class="reveal">
     <div class="section-title">🛠️ Offline IoT Development Process</div>
     <div class="dev-container">
-      <div class="dev-step reveal">
+      <div class="dev-step reveal-left">
         <img src="images/Wifi1.png" alt="WiFi 1">
-        <p>1. Use antenna to increase the received signal strength, but the result is insignificant.</p>
+        <p>1. Tested external antenna configuration to increase received signal strength, but improvement was insignificant in real environments.</p>
       </div>
-      <div class="dev-step reveal">
+      <div class="dev-step reveal-right">
         <img src="images/Wifi2.png" alt="WiFi 2">
-        <p>2. Discovery of ESP-NOW feature which allows multiple ESP devices to communicate, but high cost and uncertainty of connectivity stability.</p>
+        <p>2. Explored ESP-NOW for direct ESP-to-ESP communication; however, hardware cost and uncertainty in long-term connectivity stability were limiting factors.</p>
       </div>
-      <div class="dev-step reveal">
+      <div class="dev-step reveal-left">
         <img src="images/Wifi3.png" alt="WiFi 3">
-        <p>3. Exploration of ESP Bluetooth functionality but integrating web interfaces proved difficult using the MIT.</p>
+        <p>3. Investigated ESP Bluetooth functions, but integrating web interfaces via MIT App Inventor introduced complexity and limited flexibility.</p>
       </div>
-      <div class="dev-step reveal">
+      <div class="dev-step reveal-right">
         <img src="images/Wifi4.png" alt="WiFi 4">
-        <p>4. ESP32 can create its own Access Point and serve a local website for offline IoT control.</p>
+        <p>4. Final approach: ESP32 hosts its own Access Point and local web server, enabling offline IoT control independent of external infrastructure.</p>
       </div>
     </div>
   </section>
 
-  <section class="reveal">
+  <section class="reveal-left">
     <div class="section-title">🔥 Automatic Heating Cutoff</div>
-    <div style="max-width: 700px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 20px;">
-
-      <video width="320" controls autoplay muted loop style="border-radius: 10px; border: 2px solid #ccc; max-width: 100%;">
+    <div class="media-block">
+      <video width="320" controls autoplay muted loop>
         <source src="videos/cutoff.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
 
-      <div style="flex: 1; font-size: 18px; text-align: justify;">
+      <div class="media-text">
         <p>
-          The system automatically disables heating when the glove’s internal temperature exceeds a defined temperature limit.
-          This ensures patient comfort and prevents overheating during therapy.
+          The system automatically disables heating when the glove’s internal temperature exceeds a defined temperature limit,
+          protecting the user from overheating during therapy.
         </p>
         <p>
-          The RGB indicator will change colour from yellow to red as it closer to temperature limit.
-          The temperature limit is adjustable through both IoT, allowing flexible control based on patient needs and tolerance.
+          The RGB indicator transitions from yellow to red as temperature approaches the cutoff threshold.
+          The cutoff limit can be adjusted through the IoT interfaces to match the patient’s comfort and clinical requirements.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="reveal">
+  <section class="reveal-right">
     <div class="section-title">💪 Adjustable Strength Level</div>
-    <div style="max-width: 700px; margin: auto; display: flex; flex-direction: column; gap: 30px;">
-
-      <div style="text-align: center;">
-        <video width="100%" autoplay muted loop style="border-radius: 10px; border: 2px solid #ccc; max-width: 100%;">
+    <div class="video-column">
+      <div class="reveal">
+        <video width="100%" autoplay muted loop>
           <source src="videos/L1.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-        <p style="margin-top: 10px; font-size: 18px;">L1: 33% Duty Cycle</p>
+        <p class="video-caption">L1: 33% Duty Cycle – gentle inflation suitable for early-stage or sensitive patients.</p>
       </div>
 
-      <div style="text-align: center;">
-        <video width="100%" autoplay muted loop style="border-radius: 10px; border: 2px solid #ccc; max-width: 100%;">
+      <div class="reveal">
+        <video width="100%" autoplay muted loop>
           <source src="videos/L2.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-        <p style="margin-top: 10px; font-size: 18px;">L2: 50% Duty Cycle</p>
+        <p class="video-caption">L2: 50% Duty Cycle – moderate intensity for progressive strengthening.</p>
       </div>
     
-      <div style="text-align: center;">
-        <video width="100%" autoplay muted loop style="border-radius: 10px; border: 2px solid #ccc; max-width: 100%;">
+      <div class="reveal">
+        <video width="100%" autoplay muted loop>
           <source src="videos/L3.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-        <p style="margin-top: 10px; font-size: 18px;">L3: 100% Duty Cycle</p>
+        <p class="video-caption">L3: 100% Duty Cycle – maximum assistive movement to challenge hand muscles.</p>
       </div>
-
     </div>
   </section>
 
   <section class="reveal">
     <div class="section-title">💪 Adjustable Pump Cycle Times</div>
-    <div style="max-width: 700px; margin: auto; display: flex; flex-direction: column; gap: 30px;">
-
-      <div style="text-align: center;">
-        <video width="100%" autoplay muted loop style="border-radius: 10px; border: 2px solid #ccc; max-width: 100%;">
+    <div class="video-column">
+      <div class="reveal">
+        <video width="100%" autoplay muted loop>
           <source src="videos/Pumpcycle.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
+        <p class="video-caption">
+          Customizable inflation/deflation durations allow therapists to tune the therapy pattern to the patient’s endurance and goals.
+        </p>
       </div>
     </div>
   </section>
   
   <section class="reveal">
     <div class="section-title">🎬 Videos</div>
+    <p class="section-subtitle">
+      Watch StrokeEase in action across hardware, firmware, and hybrid IoT demonstrations.
+    </p>
     <div class="video-grid">
-      <button class="video-button" onclick="openVideo('https://www.youtube.com/embed/tXUKncyTG7I')">Circuit and IoT Validation</button>
-      <button class="video-button" onclick="openVideo('https://www.youtube.com/embed/lbiNKRIRHGs')">Air Flow Simulation</button>
-      <button class="video-button" onclick="openVideo('https://www.youtube.com/embed/Y5xFcSVNkdQ')">Synchronize Data Between IoT</button>
-      <button class="video-button" onclick="openVideo('https://www.youtube.com/embed/xiRqTU-K7zM')">Simulation of Flex Sensor Reading</button>
-      <button class="video-button" onclick="openVideo('https://www.youtube.com/embed/pNkoECWA6l4')">Final prototype demonstration</button>
+      <button class="video-button reveal-left" onclick="openVideo('https://www.youtube.com/embed/tXUKncyTG7I')">Circuit and IoT Validation</button>
+      <button class="video-button reveal-right" onclick="openVideo('https://www.youtube.com/embed/lbiNKRIRHGs')">Air Flow Simulation</button>
+      <button class="video-button reveal-left" onclick="openVideo('https://www.youtube.com/embed/Y5xFcSVNkdQ')">Synchronize Data Between IoT</button>
+      <button class="video-button reveal-right" onclick="openVideo('https://www.youtube.com/embed/xiRqTU-K7zM')">Simulation of Flex Sensor Reading</button>
+      <button class="video-button reveal" onclick="openVideo('https://www.youtube.com/embed/pNkoECWA6l4')">Final Prototype Demonstration</button>
     </div>
   </section>
 
@@ -381,28 +530,28 @@
       const modal = document.getElementById("videoModal");
       const frame = document.getElementById("videoFrame");
       modal.style.display = "none";
-      frame.src = ""; // Stop the video
+      frame.src = "";
     }
 
     // Scroll reveal using Intersection Observer
     const observerOptions = {
-      threshold: 0.2 // 20% visible
+      threshold: 0.18
     };
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('reveal-visible');
-          observer.unobserve(entry.target); // animate once
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    document.querySelectorAll('.reveal').forEach(el => {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
       revealObserver.observe(el);
     });
 
-    // Header shadow on scroll
+    // Header shadow + compact mode on scroll
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 10) {
@@ -410,6 +559,12 @@
       } else {
         header.classList.remove('scrolled');
       }
+
+      // Scroll progress bar
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      document.getElementById('scrollProgress').style.width = progress + '%';
     });
   </script>
 
